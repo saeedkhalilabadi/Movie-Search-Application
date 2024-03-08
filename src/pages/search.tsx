@@ -1,5 +1,3 @@
-
-
 import SearchInput from "../components/searchInput";
 import ResultSearch from "../components/resultSearch";
 import { useSearchQuery } from "../shared/services/movieApi";
@@ -13,12 +11,12 @@ export default function Search() {
   const { data, isLoading, error } = useSearchQuery(query);
 
   return (
-    <div className="flex flex-col gap-3 w-full px-4">
+    <div className="flex flex-col gap-3 w-full px-4 justify-center">
       <SearchInput value={s!} isLoading={isLoading} />
-      <ShowError error={error} />
+       <ShowError error={error} />
       <Pagination totalResults={data?.totalResults} pageCount="10" />
       <ResultSearch data={data} />
-      <Pagination totalResults={data?.totalResults} pageCount="10" />
+      <Pagination totalResults={data?.totalResults} pageCount="10" /> 
     </div>
   );
 }
