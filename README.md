@@ -4,11 +4,11 @@ It is a movie search application and includes a list view and details developed 
 
 Currently, two official plugins are available:
 
-- [https://khalilabadi-movie-search-application.vercel.app/](Demo link)
+- [Demo](https://khalilabadi-movie-search-application.vercel.app)
 
 ## To run the application:
 
-# Requirements
+### Requirements
 
 -Install and use node 18/20: nvm install 18 or nvm use 20
 
@@ -32,4 +32,4 @@ npm run dev Or yarn dev
 
 ## Api details:
 
--[https://www.omdbapi.com/](omdb)
+-[omdb](https://www.omdbapi.com)
