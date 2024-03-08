@@ -1,0 +1,16 @@
+type ExpandRecursively<T> = T extends object
+  ? T extends infer O
+    ? { [K in keyof O]: ExpandRecursively<O[K]> }
+    : never
+  : T;
+
+type RemoveNull<T> = ExpandRecursively<{
+  [K in keyof T]: Exclude<RemoveNull<T[K]>, null>;
+}>;
+export function removeEmpty<T>(obj: T): RemoveNull<T> {
+  return Object.fromEntries(
+    Object.entries(obj)
+      .filter(([_, v]) => v != null)
+      .map(([k, v]) => [k, v === Object(v) ? removeEmpty(v) : v])
+  ) as RemoveNull<T>;
+}
