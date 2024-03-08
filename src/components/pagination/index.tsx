@@ -9,8 +9,8 @@ type PaginationProps = {
   pageCount: string;
 };
 export default function Pagination(props: PaginationProps) {
+  const { pageCount = 10, totalResults = 10 } = props;
   const [page, setPage] = useState(1);
-  const { pageCount, totalResults } = props;
   const count = Math.round(Number(totalResults) / Number(pageCount));
   const { setPage: setPageQuery } = useQueryParams();
 
