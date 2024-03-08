@@ -23,7 +23,7 @@ export default function Pagination(props: PaginationProps) {
       <Stack spacing={2} className=" mx-auto justify-center">
         <Paginate
           count={count}
-          onChange={(e, value) => setPage(value)}
+          onChange={(_e, value) => setPage(value)}
           variant="outlined"
           shape="rounded"
         />

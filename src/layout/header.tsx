@@ -5,7 +5,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
 
 export default function Header() {
-  const headerRef = useRef(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const listenScrollEvent = () => {
     if (window.scrollY < 73 && headerRef.current) {
       headerRef.current.style.backgroundColor = "unset";

@@ -9,7 +9,7 @@ type RemoveNull<T> = ExpandRecursively<{
 }>;
 export function removeEmpty<T>(obj: T): RemoveNull<T> {
   return Object.fromEntries(
-    Object.entries(obj)
+    Object.entries({obj})
       .filter(([_, v]) => v != null)
       .map(([k, v]) => [k, v === Object(v) ? removeEmpty(v) : v])
   ) as RemoveNull<T>;

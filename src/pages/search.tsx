@@ -1,4 +1,4 @@
-import * as React from "react";
+
 
 import SearchInput from "../components/searchInput";
 import ResultSearch from "../components/resultSearch";

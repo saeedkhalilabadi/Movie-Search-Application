@@ -1,13 +1,10 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import { useEffect } from "react";
-import { SerializedError } from "@reduxjs/toolkit";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { Alert } from "@mui/material";
 
 type ShowErrorProps = {
-  error?: FetchBaseQueryError | SerializedError;
+  error?: any;
 };
 export default function ShowError(props: ShowErrorProps) {
   const { error } = props;
@@ -18,7 +15,7 @@ export default function ShowError(props: ShowErrorProps) {
   }, [error]);
 
   const handleClose = (
-    event: React.SyntheticEvent | Event,
+    _event: React.SyntheticEvent | Event,
     reason?: string
   ) => {
     if (reason === "clickaway") {
