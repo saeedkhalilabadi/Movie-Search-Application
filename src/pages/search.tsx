@@ -4,7 +4,7 @@ import { useSearchQuery } from "../shared/services/movieApi";
 import ShowError from "../components/showNotification/showError";
 import useQueryParams from "../shared/hooks/useQueryParams";
 import Pagination from "../components/pagination";
-import Skeleton from "../components/loading/skeleton";
+import Progress from "../components/loading/progress";
 
 export default function Search() {
   const { query, s } = useQueryParams();
@@ -14,7 +14,7 @@ export default function Search() {
   return (
     <div className="flex flex-col gap-3 w-full px-4 justify-center">
       <SearchInput value={s!} isLoading={isLoading || isFetching} />
-      {(isLoading || isFetching) && <Skeleton />}
+      {(isLoading || isFetching) && <Progress />}
       <ShowError error={error} />
       <Pagination totalResults={data?.totalResults} pageCount="10" />
       <ResultSearch data={data} />
