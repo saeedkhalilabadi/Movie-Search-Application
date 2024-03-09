@@ -1,7 +1,7 @@
 import { LoadingButton } from "@mui/lab";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { MoveType } from "../../shared/types/moves.type";
+import { SearchDataItemType } from "../../shared/types/moves.type";
 import { useDispatch } from "react-redux";
 import {
   addToWishlist,
@@ -10,7 +10,7 @@ import {
 import useWishlist from "../../shared/hooks/useWishlist";
 
 type WishlistButtonProps = {
-  move: MoveType;
+  move: SearchDataItemType;
 };
 
 export default function WishlistButton(props: WishlistButtonProps) {

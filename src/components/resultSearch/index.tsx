@@ -1,4 +1,3 @@
-
 import { SearchDataItemType } from "../../shared/types/moves.type";
 import MovieActionAreaCard from "../cart";
 
@@ -12,13 +11,11 @@ type DataType = {
 type ResultSearchProps = {
   data?: DataType;
   className?: string;
-  isLoading?: boolean;
 };
 
 export default function ResultSearch(props: ResultSearchProps) {
-  const { data, className, isLoading } = props;
-    
-   
+  const { data, className } = props;
+
   if (data?.Response === "False" && data?.Error)
     return <p className="mx-auto ">{data.Error}</p>;
   if (data?.Search)

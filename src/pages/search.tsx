@@ -17,7 +17,7 @@ export default function Search() {
       {(isLoading || isFetching) && <Skeleton />}
       <ShowError error={error} />
       <Pagination totalResults={data?.totalResults} pageCount="10" />
-      <ResultSearch data={data} isLoading={isLoading || isFetching} />
+      <ResultSearch data={data} />
       <Pagination totalResults={data?.totalResults} pageCount="10" />
     </div>
   );
