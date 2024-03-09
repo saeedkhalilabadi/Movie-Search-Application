@@ -10,7 +10,7 @@ import { Divider } from "@mui/material";
 export default function Search() {
   const { query, s } = useQueryParams();
   const ShowCount = ({ count }: { count: string }) => {
-    return count && <Divider>{`${count} Moves`}</Divider>;
+    return count && <Divider>{`${count} Movies`}</Divider>;
   };
 
   const { data, isLoading, isFetching, error } = useSearchQuery(query);

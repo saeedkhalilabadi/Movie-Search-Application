@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { wishlist as reduxWishlist } from "../store/wishlistState/wishListSlice";
 import MovieActionAreaCard from "../components/cart";
-import { SearchDataItemType } from "../shared/types/moves.type";
-import { Divider, Typography } from "@mui/material";
+import { SearchDataItemType } from "../shared/types/movies.type";
+import { Divider } from "@mui/material";
 
 export default function Favorite() {
   const wishlist = useSelector(reduxWishlist);
@@ -13,7 +13,7 @@ export default function Favorite() {
         {" "}
         Favorite List
       </p>
-      <Divider>{`${wishlist.length} Moves`}</Divider>
+      <Divider>{`${wishlist.length} Movies`}</Divider>
       <div
         className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-5 justify-center px-4`}
       >

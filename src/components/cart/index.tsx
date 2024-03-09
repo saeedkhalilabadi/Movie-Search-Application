@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions, Chip } from "@mui/material";
-import { SearchDataItemType } from "../../shared/types/moves.type";
+import { SearchDataItemType } from "../../shared/types/movies.type";
 import { Link } from "react-router-dom";
 import WishlistButton from "../wishListBtn";
 
@@ -44,7 +44,7 @@ export default function MovieActionAreaCard(props: MovieActionAreaCardProps) {
             Details
           </Button>
         </Link>
-        <WishlistButton move={{ Poster, Title, Type, Year, imdbID }} />
+        <WishlistButton movie={{ Poster, Title, Type, Year, imdbID }} />
       </CardActions>
     </Card>
   );

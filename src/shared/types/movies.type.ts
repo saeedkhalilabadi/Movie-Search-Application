@@ -18,7 +18,7 @@ export type MoveType = {
   Country: string;
   Awards: string;
   Poster: string;
-  Ratings: Array<RateType>;
+  Ratings: RateType[];
   Metascore: string;
   imdbRating: string;
   imdbVotes: string;

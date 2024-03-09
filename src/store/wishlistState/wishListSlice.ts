@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SearchDataItemType } from "../../shared/types/moves.type";
+import { SearchDataItemType } from "../../shared/types/movies.type";
 type WishlistType = SearchDataItemType[];
 
 const initialState: WishlistType = [];

@@ -1,13 +1,15 @@
 import { useGetByIdQuery } from "../shared/services/movieApi";
 import { useParams } from "react-router-dom";
-import { CardMedia, Chip, Divider, Rating, Typography } from "@mui/material";
+import { CardMedia, Chip, Divider, Typography } from "@mui/material";
 import ShowError from "../components/showNotification/showError";
 import ShowMessage from "../components/showResultQuery/showMessage";
 import StarIcon from "@mui/icons-material/Star";
+import Progress from "../components/loading/progress";
+import { RateType } from "../shared/types/movies.type";
 
 export default function ShowById() {
   let { imdbID } = useParams();
-  const { data, error } = useGetByIdQuery(`i=${imdbID}`);
+  const { data, error, isLoading, isFetching } = useGetByIdQuery(`i=${imdbID}`);
 
   const ShowAttribute = ({
     label,
@@ -24,11 +26,14 @@ export default function ShowById() {
     );
   };
 
+  if (isFetching || isLoading) return <Progress />;
+
+  console.log(data);
   return (
     <div className="h-full w-full text-black">
       <ShowError error={error} />
-      <ShowMessage message={data?.Error} />
-      {data ? (
+
+      {data.Response === "True" ? (
         <>
           <article className="w-[80%] h-[80%] !bg-[unset] flex flex-col md:flex-row gap-5 mx-auto">
             <CardMedia
@@ -53,7 +58,7 @@ export default function ShowById() {
                 <ShowAttribute label="Language" value={data.Language} />
 
                 <div>
-                  {data?.Ratings?.map((item) => (
+                  {data?.Ratings?.map((item: RateType) => (
                     <p className="flex flex-row items-center justify-between w-full">
                       <Typography component="legend">{item.Source}</Typography>
                       <Chip
@@ -69,7 +74,9 @@ export default function ShowById() {
             </section>
           </article>
         </>
-      ) : null}
+      ) : (
+        <ShowMessage message={data?.Error} />
+      )}
     </div>
   );
 }

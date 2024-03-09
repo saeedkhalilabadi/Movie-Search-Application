@@ -1,7 +1,7 @@
 import { LoadingButton } from "@mui/lab";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { SearchDataItemType } from "../../shared/types/moves.type";
+import { SearchDataItemType } from "../../shared/types/movies.type";
 import { useDispatch } from "react-redux";
 import {
   addToWishlist,
@@ -10,22 +10,22 @@ import {
 import useWishlist from "../../shared/hooks/useWishlist";
 
 type WishlistButtonProps = {
-  move: SearchDataItemType;
+  movie: SearchDataItemType;
 };
 
 export default function WishlistButton(props: WishlistButtonProps) {
-  const { move } = props;
+  const { movie } = props;
   const { isFavorite } = useWishlist();
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    if (isFavorite(move.imdbID)) dispatch(deleteFromWishlist(move.imdbID));
-    else dispatch(addToWishlist(move));
+    if (isFavorite(movie.imdbID)) dispatch(deleteFromWishlist(movie.imdbID));
+    else dispatch(addToWishlist(movie));
   };
 
   return (
     <LoadingButton loading={false} variant="text" onClick={handleClick}>
-      {isFavorite(move.imdbID) ? (
+      {isFavorite(movie.imdbID) ? (
         <FavoriteOutlinedIcon />
       ) : (
         <FavoriteBorderOutlinedIcon />

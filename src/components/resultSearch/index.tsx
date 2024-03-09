@@ -1,5 +1,5 @@
-import { Divider } from "@mui/material";
-import { SearchDataItemType } from "../../shared/types/moves.type";
+
+import { SearchDataItemType } from "../../shared/types/movies.type";
 import MovieActionAreaCard from "../cart";
 
 type DataType = {
