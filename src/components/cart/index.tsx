@@ -2,7 +2,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Button, CardActionArea, CardActions, Chip } from "@mui/material";
 import { SearchDataItemType } from "../../shared/types/moves.type";
 import { Link } from "react-router-dom";
 import WishlistButton from "../wishListBtn";
@@ -15,10 +15,10 @@ export default function MovieActionAreaCard(props: MovieActionAreaCardProps) {
   const { Poster, Title, Type, Year, imdbID, className } = props;
   return (
     <Card className={`w-full flex flex-col justify-between ${className}`}>
-      <CardActionArea className="!w-full h-full">
+      <CardActionArea>
         <Link to={`/movie/${imdbID}`}>
           <CardMedia
-            className="w-full h-[80%]  object-fill "
+            className="h-[85%] object-fill"
             component="img"
             image={Poster}
             alt={Title}
@@ -26,18 +26,16 @@ export default function MovieActionAreaCard(props: MovieActionAreaCardProps) {
         </Link>
         <CardContent>
           <Typography
-            className="w-full h-full text-4xl "
+            className="w-full h-full !text-sm !font-bold "
             gutterBottom
             component="div"
           >
             {Title}
           </Typography>
-          <Typography gutterBottom className="text-base" component="div">
-            {Year}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {Type}
-          </Typography>
+          <section className="w-full  flex flex-row items-center gap-2 justify-start">
+            <Chip label={Year} size="small" />
+            <Chip label={Type} size="small" />
+          </section>
         </CardContent>
       </CardActionArea>
       <CardActions>

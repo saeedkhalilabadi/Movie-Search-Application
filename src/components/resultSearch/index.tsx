@@ -1,3 +1,4 @@
+import { Divider } from "@mui/material";
 import { SearchDataItemType } from "../../shared/types/moves.type";
 import MovieActionAreaCard from "../cart";
 
@@ -20,12 +21,15 @@ export default function ResultSearch(props: ResultSearchProps) {
     return <p className="mx-auto ">{data.Error}</p>;
   if (data?.Search)
     return (
-      <div
-        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 justify-center ${className}`}
-      >
-        {data?.Search?.map((movie: SearchDataItemType) => (
-          <MovieActionAreaCard key={movie.imdbID} {...movie} />
-        ))}
-      </div>
+      <>
+        <Divider>{`${data.totalResults} Moves`}</Divider>
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-5 justify-center ${className}`}
+        >
+          {data?.Search?.map((movie: SearchDataItemType) => (
+            <MovieActionAreaCard key={movie.imdbID} {...movie} />
+          ))}
+        </div>
+      </>
     );
 }

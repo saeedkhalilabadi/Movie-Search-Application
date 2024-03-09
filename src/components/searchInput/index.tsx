@@ -22,7 +22,7 @@ export default function SearchInput(props: SearchInputProps) {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setS(text);
-    }, 1500);
+    }, 1000);
     return () => {
       clearTimeout(timeout);
     };
