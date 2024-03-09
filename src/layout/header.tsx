@@ -1,11 +1,14 @@
 import { useEffect, useRef } from "react";
 import { Logo } from "../components/logo";
-import { Button, ButtonGroup } from "@mui/material";
+import { Badge, Button, ButtonGroup } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { wishlist as reduxWishlist } from "../store/wishlistState/wishListSlice";
 
 export default function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
+  const wishlist = useSelector(reduxWishlist);
   const listenScrollEvent = () => {
     if (window.scrollY < 73 && headerRef.current) {
       headerRef.current.style.backgroundColor = "unset";
@@ -19,6 +22,8 @@ export default function Header() {
     return () => window.removeEventListener("scroll", listenScrollEvent);
   }, []);
 
+  const wishlistCount = wishlist.length;
+
   return (
     <header
       ref={headerRef}
@@ -28,7 +33,14 @@ export default function Header() {
       <ButtonGroup variant="text" aria-label="Loading button group">
         <Link to={"/favorite"}>
           <Button>
-            <FavoriteIcon />
+            <Badge
+              variant="standard"
+              badgeContent={wishlistCount > 0 ? wishlistCount : null}
+              color="error"
+              
+            >
+              <FavoriteIcon />
+            </Badge>
           </Button>
         </Link>
       </ButtonGroup>
