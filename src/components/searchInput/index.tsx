@@ -13,15 +13,18 @@ type SearchInputProps = {
 export default function SearchInput(props: SearchInputProps) {
   const { className, isLoading, value } = props;
   const [text, setText] = useState("");
-  useEffect(() => {
-    if (value) setText(value);
-  }, []);
-
   const { setS } = useQueryParams();
 
   useEffect(() => {
+    if (value) {
+      setText(value);
+      setS(value);
+    }
+  }, []);
+
+  useEffect(() => {
     const timeout = setTimeout(() => {
-      setS(text);
+      if (text.length > 0) setS(text);
     }, 1000);
     return () => {
       clearTimeout(timeout);

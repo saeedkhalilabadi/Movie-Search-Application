@@ -18,7 +18,9 @@ export default function useQueryParams() {
   const setPage = (page: string) => {
     navigate({
       pathname: `/`,
-      search: createSearchParams(removeEmpty({ s, page, type, y })).toString(),
+      search: createSearchParams(
+        removeEmpty({ s, page: page === "1" ? null : page, type, y })
+      ).toString(),
     });
   };
 
@@ -44,6 +46,7 @@ export default function useQueryParams() {
   };
 
   const query = useMemo(() => {
+    if (!s || s === "") return "";
     return getSearchQuery({ s, page, type, y });
   }, [s, page, type, y]);
 
